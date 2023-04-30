@@ -110,3 +110,22 @@ app.use("/api",router);
 app.listen(8000,()=>{
   console.log("Server is up and Running")
 })
+const movies = require("./movies.json")
+const fs = require("fs");
+const fileName = './file.json';
+
+const getMoviesList = (req,res) =>{
+ res.json(movies);
+}
+
+const addMovies = (req,res) =>{
+  const {body={}} = req;
+  movies.push(body);
+  fs.writeFileSync("/movies.json", JSON.stringify(movies));
+  res.send(movies)
+}
+
+module.exports = {
+  getMoviesList,
+  addMovies
+}
