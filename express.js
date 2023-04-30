@@ -140,3 +140,12 @@ router.get("/list",getMoviesList)
 router.post("/add",addMovies)
 
 module.exports = router;
+const users = require("./users.js")
+
+const getUsersList = (req, res) => {
+  res.send(users);
+}
+
+module.exports = {
+  getUsersList
+}
