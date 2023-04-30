@@ -129,3 +129,14 @@ module.exports = {
   getMoviesList,
   addMovies
 }
+
+const express = require("express");
+
+const {getMoviesList,addMovies} = require("./moviesController");
+
+const router = express.Router();
+
+router.get("/list",getMoviesList)
+router.post("/add",addMovies)
+
+module.exports = router;
