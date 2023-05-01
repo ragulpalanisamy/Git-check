@@ -305,3 +305,17 @@ router.use("/movies",moviesRoutes);
 router.use("/users",userRoutes);
 
 module.exports = router;
+const movies = require("./movies.json")
+
+const getMoviesList = (req,res) =>{
+ res.json(movies);
+}
+
+const addMovies = (req,res)=>{
+  res.send("Added");
+}
+
+module.exports = {
+  getMoviesList,
+  addMovies
+}
