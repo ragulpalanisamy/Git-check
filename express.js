@@ -319,3 +319,24 @@ module.exports = {
   getMoviesList,
   addMovies
 }
+
+[
+  {
+    "id" :101,
+    "title":"joy",
+    "year" :"2019",
+    "rating" :"7.5"
+  },
+  {
+    "id" :102,
+    "title":"Superman",
+    "year" :"2013",
+    "rating" :"9.5"
+  },
+  {
+    "id" :103,
+    "title":"Martian",
+    "year" :"2012",
+    "rating" :"8.5"
+  }
+]
