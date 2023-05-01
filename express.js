@@ -294,4 +294,14 @@ const users = [
 ]
 
 module.exports = users
-  
+const express= require("express");
+
+const moviesRoutes = require("./movies/moviesRoutes");
+const userRoutes = require("./users/usersRoutes");
+
+const router = express.Router();
+
+router.use("/movies",moviesRoutes);
+router.use("/users",userRoutes);
+
+module.exports = router;
