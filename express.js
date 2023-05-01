@@ -149,3 +149,59 @@ const getUsersList = (req, res) => {
 module.exports = {
   getUsersList
 }
+
+const users = require("./users");
+
+const getUsersList = (req,res) => {
+  res.json(users)
+}
+
+const getUser = (req,res) => {
+  let {userId=""} = req.params;
+  //Filtering the requested data from json
+  let response = users.filter(obj => obj.id==userId);
+
+  // If data present return 200 with the data
+  if(response.length > 0) {
+    res.status(200).json(response[0]);
+  }
+  //else return 400 with the error message
+  else {
+    res.status(400).json({
+      success : false,
+      message : "Bad Request. Given UserId is not present"
+    })
+  }
+}
+
+const authMiddleware = (req,res, next) => {
+  const host = req.get('host');
+  
+  if(host.indexOf("repl1.co") > -1) {
+    next()
+  }
+  else {
+    res.status(401).json({
+      "success" : false,
+      "status" : "401",
+      "message" : "Unauthorized Access"
+    });
+  }
+}
+
+module.exports = {
+  getUsersList,
+  getUser,
+  authMiddleware
+}
+
+const express = require("express");
+
+const {getUsersList, getUser, authMiddleware} = require("./usersController");
+
+const userRouter = express.Router();
+
+userRouter.get("/list",authMiddleware, getUsersList);
+userRouter.get("/list/:userId",getUser);
+
+module.exports = userRouter;
