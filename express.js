@@ -340,3 +340,5 @@ module.exports = {
     "rating" :"8.5"
   }
 ]
+
+https://github.com/ragulpalanisamy/boilerplate-npm
