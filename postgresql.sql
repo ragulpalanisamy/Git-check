@@ -30,3 +30,21 @@ module.exports = (Sequelize, DataTypes) => {
 
     return Movies;
 };
+
+
+const Sequelize = require("sequelize");
+
+const PG_URL = "postgres://wgxwxyht:tt53d-f7zu_idq6Y10J6uug3z2rh7w8P@lallah.db.elephantsql.com/wgxwxyht";
+
+const sequelize = new Sequelize(PG_URL, {
+  dialect: "postgres"
+});
+
+const db = {};
+
+db.Sequelize = Sequelize;
+db.sequelize = sequelize;
+
+db.Movies = require("./Movies.js")(sequelize, Sequelize);
+
+module.exports = db;
